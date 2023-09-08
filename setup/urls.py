@@ -14,6 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+# É aqui que você consegue colocar todas as rotas do seu projeto. Ele que controla tudo isso dentro do Django. Mas o ideal não é colocar tudo numa unica parte. Por isso deve-se dividir usando o 'include' e selecionando o caminho onde vai ficar o Urls de cada projeto. Dessa forma fica mais organizado.
+
 from django.contrib import admin
 from django.urls import path, include
 

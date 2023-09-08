@@ -22,7 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv()
-SECRET_KEY = str(os.getenv("SECRET_KEY"))
+SECRET_KEY = str(
+    os.getenv("SECRET_KEY")
+)  # Para ter mais segurança você irá esconder a secret key do github.
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "galeria",
+    "galeria",  # Aqui você adiciona os apps que irá criar
 ]
 
 MIDDLEWARE = [
@@ -54,10 +56,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "setup.urls"
 
-TEMPLATES = [
+TEMPLATES = [  # É aqui que fica toda a configuração relacionada a parte visual da nossa aplicação.
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            os.path.join(BASE_DIR, "templates")
+        ],  # Dirs é referente ao local, onde exatamente é que ficam os arquivos html.
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -119,6 +123,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+# Com isso nós conseguiremos indigar onde ficarão todos os nossos arquivos referentes ao estilo da nossa aplicação
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "setup/static")]
+
+# Precisamos passar, também, o caminho absoluto para que o diretório consiga pegarr os arquivos estáticos. Para isso, vamos inserir a "raiz" dos caminhos com STATIC_ROOT, com o caminho `os.path.join(BASE_DIR, 'static'):
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
