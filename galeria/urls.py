@@ -6,5 +6,5 @@ from galeria.views import index, imagem
 # Lista com todos os endereços da galeria
 urlpatterns = [
   path("", index, name = 'index'),
-  path("imagem/", imagem, name = 'imagem')
+  path("imagem/<int:foto_id>", imagem, name = 'imagem')
 ]
