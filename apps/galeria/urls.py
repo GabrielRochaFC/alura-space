@@ -1,7 +1,7 @@
 # Aqui ficarão os urls somente do App galeria. Dessa forma ficará mais organizado.
 
 from django.urls import path
-from galeria.views import index, imagem, buscar
+from apps.galeria.views import index, imagem, buscar
 
 # Lista com todos os endereços da galeria
 urlpatterns = [
